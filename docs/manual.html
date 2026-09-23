@@ -1,0 +1,1756 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BackupPro v3.0 - User Manual</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.8;
+            color: #333;
+            background: #f5f5f5;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+
+        header {
+            background: linear-gradient(135deg, #27AE60 0%, #229954 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 1.3rem;
+            opacity: 0.9;
+        }
+
+        .version {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            padding: 5px 15px;
+            border-radius: 20px;
+            margin-top: 15px;
+            font-size: 0.9rem;
+        }
+
+        nav {
+            background: #2c3e50;
+            padding: 20px 40px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-right: 25px;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #27AE60;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        h2 {
+            color: #27AE60;
+            font-size: 2.2rem;
+            margin: 40px 0 20px 0;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #27AE60;
+        }
+
+        h3 {
+            color: #2c3e50;
+            font-size: 1.6rem;
+            margin: 30px 0 15px 0;
+        }
+
+        h4 {
+            color: #34495e;
+            font-size: 1.3rem;
+            margin: 20px 0 10px 0;
+        }
+
+        p {
+            margin-bottom: 15px;
+        }
+
+        ul, ol {
+            margin: 15px 0 15px 30px;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        .feature-box {
+            background: #f8f9fa;
+            border-left: 4px solid #27AE60;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+
+        .warning-box {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+
+        .tip-box {
+            background: #d1ecf1;
+            border-left: 4px solid #17a2b8;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+
+        .error-box {
+            background: #f8d7da;
+            border-left: 4px solid #dc3545;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+
+        code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+
+        .screenshot-placeholder {
+            background: #e9ecef;
+            border: 2px dashed #adb5bd;
+            padding: 60px;
+            text-align: center;
+            color: #6c757d;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        table th {
+            background: #27AE60;
+            color: white;
+            padding: 12px;
+            text-align: left;
+        }
+
+        table td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        table tr:hover {
+            background: #f8f9fa;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #27AE60;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 4px;
+            margin: 5px;
+        }
+
+        .btn:hover {
+            background: #229954;
+        }
+
+        footer {
+            background: #2c3e50;
+            color: white;
+            padding: 30px 40px;
+            text-align: center;
+        }
+
+        .toc {
+            background: #f8f9fa;
+            padding: 30px;
+            margin: 30px 0;
+            border-radius: 8px;
+        }
+
+        .toc ul {
+            list-style: none;
+            margin: 0;
+        }
+
+        .toc li {
+            margin: 10px 0;
+        }
+
+        .toc a {
+            color: #27AE60;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .toc a:hover {
+            text-decoration: underline;
+        }
+
+        @media print {
+            nav {
+                display: none;
+            }
+            .container {
+                box-shadow: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>💾 BackupPro v3.0</h1>
+            <p>Professional Backup Suite</p>
+            <span class="version">v3.0 - User Manual</span>
+        </header>
+
+        <nav>
+            <a href="#introduction">Introduction</a>
+            <a href="#getting-started">Getting Started</a>
+            <a href="#introduction">Features</a>
+            <a href="#settings">Settings</a>
+            <a href="#troubleshooting">Troubleshooting</a>
+        </nav>
+
+        <div class="content">
+            <!-- TABLE OF CONTENTS -->
+            <div class="toc">
+                <h3>📑 Table of Contents</h3>
+                <ul>
+                    <li><a href="#introduction">1. Introduction</a></li>
+                    <li><a href="#system-requirements">2. System Requirements</a></li>
+                    <li><a href="#installation">3. Installation</a></li>
+                    <li><a href="#getting-started">4. Getting Started</a></li>
+                    <li><a href="#quick-profile-backup">5. Quick User Profile Backup</a></li>
+                    <li><a href="#quick-sync">6. Quick Sync</a></li>
+                    <li><a href="#disk-image">7. Disk Imaging</a>
+                        <ul>
+                            <li><a href="#dism-image">7.1 DISM System Image (Alternative Method)</a></li>
+                            <li><a href="#nas-imaging">7.2 Backing Up to a NAS / Network Share</a></li>
+                            <li><a href="#reset-backup-service">7.3 "Another Backup or Recovery Operation Is In Progress"</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#winpe-media">8. WinPE Recovery Media</a></li>
+                    <li><a href="#tools">9. Tools</a>
+                        <ul>
+                            <li><a href="#browser-backup">9.1 Browser Data Backup</a></li>
+                            <li><a href="#wifi-export">9.2 WiFi Password Export</a></li>
+                            <li><a href="#app-inventory">9.3 App Inventory Migration</a></li>
+                            <li><a href="#env-backup">9.4 Environment Variables Backup</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#restore">10. Restore Wizard</a></li>
+                    <li><a href="#profiles">11. Backup Profiles</a></li>
+                    <li><a href="#scheduling">12. Scheduling</a></li>
+                    <li><a href="#settings">13. Settings</a></li>
+                    <li><a href="#troubleshooting">14. Troubleshooting</a></li>
+                    <li><a href="#best-practices">15. Best Practices</a></li>
+                    <li><a href="#quick-reference">16. Quick Reference</a></li>
+                </ul>
+            </div>
+
+            <!-- INTRODUCTION -->
+            <section id="introduction">
+                <h2>1. Introduction</h2>
+                
+                <p>BackupPro v3.0 is a comprehensive professional backup suite designed for IT technicians, system administrators, and power users who need reliable data protection. Whether you're backing up a single workstation or managing backups across multiple systems, BackupPro provides the tools you need.</p>
+
+                <div class="feature-box">
+                    <h4>🎯 Key Features at a Glance:</h4>
+                    <ul>
+                        <li><strong>Quick User Profile Backup</strong> - One-click backup of user data with OneDrive support</li>
+                        <li><strong>Folder Synchronization</strong> - Mirror folders with optional ZIP compression</li>
+                        <li><strong>System Imaging</strong> - Full disk backups via Windows Backup (VSS) or DISM</li>
+                        <li><strong>WinPE Recovery Media</strong> - Build a bootable ISO/USB that bundles BackupPro and your restore scripts for bare-metal recovery</li>
+                        <li><strong>App Inventory Migration</strong> - Export installed apps (winget) with a one-click reinstall script</li>
+                        <li><strong>Environment Variables Backup</strong> - Preserve and restore user/system environment settings</li>
+                        <li><strong>Browser Data Rescue</strong> - Export bookmarks and settings from all major browsers</li>
+                        <li><strong>WiFi Password Export</strong> - Save all WiFi credentials to a text file</li>
+                        <li><strong>Restore Wizard</strong> - Easy recovery of backed up data</li>
+                        <li><strong>Scheduling</strong> - Automate backups via Windows Task Scheduler</li>
+                        <li><strong>Multi-Channel Notifications</strong> - Email, SMS text, and ntfy push alerts when operations complete</li>
+                    </ul>
+                </div>
+
+                <h3>Who Should Use BackupPro?</h3>
+                <ul>
+                    <li><strong>IT Technicians</strong> - Quick backups during system migrations and repairs</li>
+                    <li><strong>System Administrators</strong> - Scheduled backups for workstations and servers</li>
+                    <li><strong>Home Users</strong> - Simple data protection for important files</li>
+                    <li><strong>Managed Service Providers</strong> - Deploy and manage backups across client systems</li>
+                </ul>
+            </section>
+
+            <!-- SYSTEM REQUIREMENTS -->
+            <section id="system-requirements">
+                <h2>2. System Requirements</h2>
+
+                <h3>Minimum Requirements:</h3>
+                <ul>
+                    <li><strong>Operating System:</strong> Windows 10 (64-bit) or Windows 11</li>
+                    <li><strong>Memory:</strong> 4 GB RAM</li>
+                    <li><strong>Disk Space:</strong> 50 MB for application</li>
+                    <li><strong>Python:</strong> Python 3.8 or higher (for running .py version)</li>
+                    <li><strong>Dependencies:</strong> customtkinter library</li>
+                </ul>
+
+                <h3>Recommended:</h3>
+                <ul>
+                    <li><strong>Operating System:</strong> Windows 11 23H2 or later</li>
+                    <li><strong>Memory:</strong> 8 GB RAM or higher</li>
+                    <li><strong>Administrator Rights:</strong> Required for disk imaging and system-level operations</li>
+                    <li><strong>Network Storage:</strong> NAS or network share for remote backups</li>
+                </ul>
+
+                <div class="warning-box">
+                    <strong>⚠️ Important:</strong> Some features require Administrator privileges. Right-click the application and select "Run as Administrator" for full functionality.
+                </div>
+            </section>
+
+            <!-- INSTALLATION -->
+            <section id="installation">
+                <h2>3. Installation</h2>
+
+                <p>BackupPro can be run either as the pre-compiled <code>backuppro3.exe</code> (simplest, no Python required) or directly from the <code>backuppro3.py</code> source.</p>
+
+                <h3>Option A: Run the Compiled Executable</h3>
+                <ol>
+                    <li>Copy <code>backuppro3.exe</code> to a permanent location</li>
+                    <li>Right-click and select "Run as Administrator" (recommended, required for disk imaging and WinPE features)</li>
+                </ol>
+                <div class="tip-box">
+                    <strong>💡 Note:</strong> The exe keeps its own <code>backup_config.json</code> and <code>backup_log.txt</code> in whatever folder it's run from - keep it in a stable location so your settings persist.
+                </div>
+
+                <h3>Option B: Run from Python Source</h3>
+                <ol>
+                    <li>Install Python 3.11+ from <a href="https://www.python.org/downloads/" target="_blank">python.org</a> (check "Add Python to PATH")</li>
+                    <li>Install the one required package:
+                        <br><code>pip install customtkinter</code>
+                    </li>
+                    <li>Verify installation:
+                        <br><code>python -c "import customtkinter"</code>
+                    </li>
+                    <li>Right-click <code>backuppro3.py</code> and select "Run as Administrator" (recommended), or open Command Prompt as Admin and run:
+                        <br><code>python backuppro3.py</code>
+                    </li>
+                </ol>
+
+                <div class="tip-box">
+                    <strong>💡 Tip:</strong> Create a desktop shortcut with "Run as Administrator" enabled for quick access. Right-click the shortcut → Properties → Advanced → Check "Run as administrator"
+                </div>
+
+                <h3>First Launch:</h3>
+                <p>On first launch, BackupPro will:</p>
+                <ul>
+                    <li>Check for Administrator privileges</li>
+                    <li>Create configuration files (<code>backup_config.json</code>)</li>
+                    <li>Initialize the log file (<code>backup_log.txt</code>)</li>
+                    <li>Test NAS connectivity (if configured)</li>
+                </ul>
+            </section>
+
+            <!-- GETTING STARTED -->
+            <section id="getting-started">
+                <h2>4. Getting Started</h2>
+
+                <h3>Interface Overview</h3>
+                <p>BackupPro's interface is divided into several key areas:</p>
+
+                <h4>Top Header:</h4>
+                <ul>
+                    <li><strong>🏠 Quick Profile Backup</strong> - Instant user profile backup</li>
+                    <li><strong>🔄 NAS Check</strong> - Test network storage connectivity</li>
+                    <li><strong>⚙️ Settings</strong> - Configure application preferences</li>
+                    <li><strong>❓ Help</strong> - View built-in help documentation</li>
+                    <li><strong>⏹ Cancel</strong> - Stop current operation</li>
+                    <li><strong>❌ Exit</strong> - Close the application</li>
+                </ul>
+
+                <h4>Main Tabs:</h4>
+                <ul>
+                    <li><strong>Quick Sync</strong> - Folder synchronization and archiving</li>
+                    <li><strong>Disk Image</strong> - Full system drive backups (wbAdmin/VSS or DISM)</li>
+                    <li><strong>Tools</strong> - Browser backup, WiFi export, app inventory, and environment migration utilities</li>
+                    <li><strong>WinPE Media</strong> - Build bootable recovery ISO/USB media</li>
+                    <li><strong>Restore</strong> - Browse and restore from backups</li>
+                    <li><strong>Profiles</strong> - Save and manage backup configurations</li>
+                    <li><strong>Schedule</strong> - Set up automated backup tasks</li>
+                </ul>
+
+                <h4>Activity Monitor (Right Panel):</h4>
+                <ul>
+                    <li><strong>Status Display</strong> - Current operation status</li>
+                    <li><strong>Progress Bar</strong> - Visual progress indicator</li>
+                    <li><strong>Event Log</strong> - Detailed operation messages</li>
+                    <li><strong>NAS Status</strong> - Network storage connection indicator</li>
+                </ul>
+            </section>
+
+            <!-- QUICK PROFILE BACKUP -->
+            <section id="quick-profile-backup">
+                <h2>5. Quick User Profile Backup</h2>
+
+                <p>The Quick User Profile Backup feature automatically detects the current user and backs up all important personal data in one click.</p>
+
+                <h3>What Gets Backed Up:</h3>
+                <ul>
+                    <li>🖥️ Desktop (including OneDrive Desktop)</li>
+                    <li>📄 Documents (including OneDrive Documents)</li>
+                    <li>🖼️ Pictures (including OneDrive Pictures)</li>
+                    <li>🎬 Videos</li>
+                    <li>⬇️ Downloads</li>
+                    <li>🎵 Music</li>
+                    <li>⭐ Favorites</li>
+                    <li>🎮 Saved Games</li>
+                </ul>
+
+                <h3>How to Use:</h3>
+                <ol>
+                    <li>Click the <strong>🏠 Quick Profile Backup</strong> button in the header</li>
+                    <li>Review the confirmation dialog showing:
+                        <ul>
+                            <li>Current username</li>
+                            <li>Profile location</li>
+                            <li>Folders to be backed up</li>
+                        </ul>
+                    </li>
+                    <li>Click <strong>Yes</strong> to continue</li>
+                    <li>Select destination folder (external drive, network share, etc.)</li>
+                    <li>Review the final confirmation showing source and destination</li>
+                    <li>Click <strong>Yes</strong> to start the backup</li>
+                    <li>Monitor progress in the Activity Log</li>
+                    <li>When complete, choose to open the backup folder</li>
+                </ol>
+
+                <div class="feature-box">
+                    <h4>🔍 OneDrive Detection</h4>
+                    <p>BackupPro automatically detects and backs up OneDrive folders! If your Desktop, Documents, or Pictures are redirected to OneDrive (Personal or Business), they will be found and backed up correctly.</p>
+                    <p>The backup will check:</p>
+                    <ul>
+                        <li>Standard Windows locations (C:\Users\Username\Desktop)</li>
+                        <li>OneDrive Personal (C:\Users\Username\OneDrive\Desktop)</li>
+                        <li>OneDrive Business (C:\Users\Username\OneDrive - Company\Desktop)</li>
+                        <li>Windows Registry redirects</li>
+                    </ul>
+                    <p>If multiple versions exist, both will be backed up with clear labels.</p>
+                </div>
+
+                <h3>Backup Location:</h3>
+                <p>Backups are stored in timestamped folders:</p>
+                <code>UserBackup_Username_20260207_143052</code>
+
+                <h3>Estimated Time:</h3>
+                <ul>
+                    <li><strong>Small profile (&lt;10 GB):</strong> 5-15 minutes</li>
+                    <li><strong>Medium profile (10-50 GB):</strong> 15-45 minutes</li>
+                    <li><strong>Large profile (&gt;50 GB):</strong> 1+ hours</li>
+                </ul>
+
+                <div class="tip-box">
+                    <strong>💡 Best Practice:</strong> Run Quick Profile Backup before:
+                    <ul>
+                        <li>Windows updates</li>
+                        <li>System migrations</li>
+                        <li>Hardware replacements</li>
+                        <li>Major software installations</li>
+                        <li>Computer repairs</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- QUICK SYNC -->
+            <section id="quick-sync">
+                <h2>6. Quick Sync</h2>
+
+                <p>The Quick Sync feature provides flexible folder synchronization with optional compression.</p>
+
+                <h3>Sync Modes:</h3>
+
+                <h4>1. Mirror Mode (Default)</h4>
+                <p>Creates an exact mirror of the source at the destination. The destination will match the source completely.</p>
+                <div class="warning-box">
+                    <strong>⚠️ Warning:</strong> Mirror mode will DELETE files in the destination that don't exist in the source!
+                </div>
+
+                <h4>2. Compression Mode (ZIP Archive)</h4>
+                <p>Creates a compressed ZIP archive of the source folder, saving 50-70% disk space.</p>
+                <ul>
+                    <li>Creates timestamped ZIP files</li>
+                    <li>Automatically excludes cache and junk folders</li>
+                    <li>Perfect for archiving projects</li>
+                    <li>Displays final archive size</li>
+                </ul>
+
+                <h3>How to Use Quick Sync:</h3>
+
+                <h4>Basic Sync:</h4>
+                <ol>
+                    <li>Go to the <strong>Quick Sync</strong> tab</li>
+                    <li>Click <strong>📁 Browse</strong> next to "Source Folder"</li>
+                    <li>Select the folder you want to backup</li>
+                    <li>Click <strong>📁 Browse</strong> next to "Destination Folder"</li>
+                    <li>Select where to store the backup</li>
+                    <li>Click <strong>▶️ RUN SYNC</strong></li>
+                    <li>Confirm the operation</li>
+                </ol>
+
+                <h4>Compressed Archive:</h4>
+                <ol>
+                    <li>Follow steps 1-4 above</li>
+                    <li>Check <strong>📦 Create ZIP archive</strong></li>
+                    <li>Click <strong>▶️ RUN SYNC</strong></li>
+                    <li>Archive will be created with timestamp:
+                        <br><code>FolderName_20260207_143052.zip</code>
+                    </li>
+                </ol>
+
+                <h4>Dry Run (Preview):</h4>
+                <ol>
+                    <li>Check <strong>Dry Run (preview only, no changes)</strong></li>
+                    <li>Click <strong>▶️ RUN SYNC</strong></li>
+                    <li>Review what would be copied without making changes</li>
+                    <li>Uncheck Dry Run and run again to execute</li>
+                </ol>
+
+                <h3>Excluded Folders:</h3>
+                <p>When creating archives, these folders are automatically skipped:</p>
+                <ul>
+                    <li><code>node_modules</code> - JavaScript dependencies</li>
+                    <li><code>.git</code> - Git repositories</li>
+                    <li><code>__pycache__</code> - Python cache</li>
+                    <li><code>Cache</code> and <code>cache</code> - Various cache folders</li>
+                </ul>
+
+                <h3>Saving as Profile:</h3>
+                <p>Save frequently used sync configurations:</p>
+                <ol>
+                    <li>Configure your source and destination</li>
+                    <li>Click <strong>💾 Save as Profile</strong></li>
+                    <li>Enter a profile name (e.g., "Weekly Documents Backup")</li>
+                    <li>Access it anytime from the Profiles tab</li>
+                </ol>
+
+                <div class="tip-box">
+                    <strong>💡 Use Cases:</strong>
+                    <ul>
+                        <li><strong>Mirror Mode:</strong> Daily backups, keeping an exact copy</li>
+                        <li><strong>Compression Mode:</strong> Archiving completed projects, monthly archives</li>
+                        <li><strong>Dry Run:</strong> Testing new backup configurations</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- DISK IMAGE -->
+            <section id="disk-image">
+                <h2>7. Disk Imaging</h2>
+
+                <p>Create full system drive images using Windows Backup (wbAdmin). Perfect for disaster recovery.</p>
+
+                <div class="error-box">
+                    <strong>⚠️ Administrator Required:</strong> Disk imaging requires BackupPro to be run as Administrator. Right-click and "Run as Administrator" before using this feature.
+                </div>
+
+                <h3>What is a Disk Image?</h3>
+                <p>A disk image is a complete backup of an entire drive, including:</p>
+                <ul>
+                    <li>Operating system</li>
+                    <li>Installed programs</li>
+                    <li>System settings</li>
+                    <li>All user data</li>
+                    <li>Boot information</li>
+                </ul>
+
+                <h3>How to Create a Disk Image:</h3>
+                <ol>
+                    <li>Ensure BackupPro is running as Administrator</li>
+                    <li>Go to the <strong>Disk Image</strong> tab</li>
+                    <li>Select <strong>Drive to Image</strong> (usually C:)</li>
+                    <li>Click <strong>📁 Browse</strong> next to "Backup Destination"</li>
+                    <li>Select destination (must be different drive, network share, or external drive)</li>
+                    <li>Set <strong>Keep Last N Backups</strong> (default: 5)</li>
+                    <li>Click <strong>▶️ START IMAGING</strong></li>
+                    <li>Confirm the operation</li>
+                    <li>Wait for completion (30+ minutes typical)</li>
+                </ol>
+
+                <h3>Backup Retention:</h3>
+                <p>BackupPro automatically manages disk images based on your retention setting:</p>
+                <ul>
+                    <li><strong>Keep: 3</strong> - Keeps the 3 most recent backups</li>
+                    <li><strong>Keep: 5</strong> - Keeps the 5 most recent backups (default)</li>
+                    <li>Older backups are automatically deleted to save space</li>
+                </ul>
+
+                <h3>Naming Convention:</h3>
+                <code>SystemImage_C_20260207_143052</code>
+
+                <h3>Storage Requirements:</h3>
+                <table>
+                    <tr>
+                        <th>Drive Size</th>
+                        <th>Image Size (Approximate)</th>
+                        <th>Time Required</th>
+                    </tr>
+                    <tr>
+                        <td>250 GB (50% used)</td>
+                        <td>~125 GB</td>
+                        <td>30-45 minutes</td>
+                    </tr>
+                    <tr>
+                        <td>500 GB (50% used)</td>
+                        <td>~250 GB</td>
+                        <td>60-90 minutes</td>
+                    </tr>
+                    <tr>
+                        <td>1 TB (50% used)</td>
+                        <td>~500 GB</td>
+                        <td>2-3 hours</td>
+                    </tr>
+                </table>
+
+                <h3>Restoring from Disk Image:</h3>
+                <p>To restore a system image:</p>
+                <ol>
+                    <li>Boot from Windows installation media</li>
+                    <li>Select "Repair your computer"</li>
+                    <li>Choose "System Image Recovery"</li>
+                    <li>Browse to your backup location</li>
+                    <li>Follow the on-screen wizard</li>
+                </ol>
+
+                <div class="warning-box">
+                    <strong>⚠️ Important:</strong>
+                    <ul>
+                        <li>Cannot backup to the same drive being imaged</li>
+                        <li>Network share must be accessible and have sufficient space</li>
+                        <li>External drive must be connected before starting</li>
+                        <li>Do not disconnect drives during imaging</li>
+                    </ul>
+                </div>
+
+                <div class="tip-box">
+                    <strong>💡 Best Practice:</strong> Create a disk image:
+                    <ul>
+                        <li>After fresh Windows installation and setup</li>
+                        <li>Before major updates</li>
+                        <li>Monthly for critical systems</li>
+                        <li>Before significant system changes</li>
+                    </ul>
+                </div>
+
+                <h3 id="dism-image">7.1 DISM System Image (Alternative Method)</h3>
+                <p>Below the wbAdmin imaging controls, BackupPro offers a second, file-based imaging method using <strong>DISM</strong> (Deployment Image Servicing and Management), Microsoft's own OS deployment tool. It captures a folder or drive into a single <code>.wim</code> file.</p>
+
+                <h4>DISM vs. wbAdmin - Which to Use:</h4>
+                <table>
+                    <tr>
+                        <th>Method</th>
+                        <th>Best For</th>
+                        <th>Notes</th>
+                    </tr>
+                    <tr>
+                        <td><strong>wbAdmin (CREATE SYSTEM IMAGE)</strong></td>
+                        <td>Live, running system drive (C:)</td>
+                        <td>Uses Volume Shadow Copy (VSS) to snapshot open/locked files - the reliable choice for imaging a drive Windows is actively running from</td>
+                    </tr>
+                    <tr>
+                        <td><strong>DISM (Capture Image)</strong></td>
+                        <td>Non-system drives, offline partitions, or capturing from WinPE</td>
+                        <td>Not VSS-aware - capturing a live C: drive can fail if another process has a file open (see Troubleshooting)</td>
+                    </tr>
+                </table>
+
+                <div class="warning-box">
+                    <strong>⚠️ Capturing a Live C: Drive with DISM:</strong> If you select the system drive as the DISM source, BackupPro warns you and offers to exclude common lock-prone files (<code>pagefile.sys</code>, <code>hiberfil.sys</code>, <code>swapfile.sys</code>, <code>DumpStack.log.tmp</code>, OneDrive's sync-staging folder, etc.). This reduces but doesn't eliminate the risk of failure - for a fully reliable full-OS capture, use <strong>wbAdmin</strong> instead, or boot into <a href="#winpe-media">WinPE Recovery Media</a> and capture from there.
+                </div>
+
+                <h4>How to Capture a DISM Image:</h4>
+                <ol>
+                    <li>Go to the <strong>Disk Image</strong> tab and scroll to <strong>DISM System Image</strong></li>
+                    <li>Click <strong>📀 Capture Image (DISM)</strong></li>
+                    <li>Select the folder/drive to capture and where to save the <code>.wim</code> file</li>
+                    <li>Enter a name for the image</li>
+                    <li>Confirm and wait for the capture to complete</li>
+                </ol>
+
+                <h4>Restoring a DISM Image:</h4>
+                <p>Click <strong>📝 Generate DISM Restore Script</strong> to create a <code>dism_apply.ps1</code>/<code>.bat</code> pair set up to restore the image via <code>dism /Apply-Image</code> plus <code>bcdboot</code>. This is meant to be run <strong>from WinPE</strong> on the target machine after formatting the destination disk - review and edit the drive-letter placeholders in the script for the target hardware before using it. Bundle the generated folder into your <a href="#winpe-media">WinPE Recovery Media</a> so it's available at restore time.</p>
+
+                <h3 id="nas-imaging">7.2 Backing Up to a NAS / Network Share</h3>
+                <p>Both wbAdmin and DISM can target a network destination, but there are two Windows-specific quirks worth knowing about:</p>
+
+                <h4>Mapped Drive Letters Aren't Supported by wbAdmin:</h4>
+                <p>If you browse to a mapped drive (e.g. <code>V:\Backups</code>), BackupPro automatically detects this and offers to convert it to the real network path (e.g. <code>\\192.168.1.60\Share\Backups</code>) before starting - wbAdmin rejects mapped drive letters outright.</p>
+
+                <h4>NAS Login Prompt:</h4>
+                <p>Administrator-elevated backups run in a different Windows logon session than your normal desktop, so they can't see your everyday mapped-drive login even if the drive works fine everywhere else. When BackupPro detects a network destination, it shows a <strong>🔐 NAS Login Required</strong> dialog asking for the NAS username and password directly. Check <strong>Remember in Settings</strong> to save them so you're not asked every time - see <a href="#settings">Settings → NAS Login</a>.</p>
+
+                <div class="tip-box">
+                    <strong>💡 Tip:</strong> The login dialog pre-fills the username from your existing mapped-drive connection when it can find one, so you often only need to type the password.
+                </div>
+
+                <h3 id="reset-backup-service">7.3 "Another Backup or Recovery Operation Is In Progress"</h3>
+                <p>If wbAdmin reports this error and you're sure nothing is genuinely running, BackupPro has a one-click fix: click <strong>🔄 Stuck on "another backup is in progress"? Reset Backup Service</strong> below the imaging button. This restarts the Windows Block Level Backup Engine service (<code>wbengine</code>), which clears the stuck state. See <a href="#troubleshooting">Troubleshooting</a> for more detail.</p>
+            </section>
+
+            <!-- WINPE MEDIA -->
+            <section id="winpe-media">
+                <h2>8. WinPE Recovery Media</h2>
+
+                <p>The <strong>WinPE Media</strong> tab builds a bootable Windows PE recovery ISO or USB drive that bundles your restore scripts - and optionally BackupPro itself - so you can recover a machine even when Windows won't boot at all.</p>
+
+                <div class="feature-box">
+                    <h4>🥾 What You Can Bundle Onto the Media:</h4>
+                    <ul>
+                        <li>Your <strong>App Inventory</strong> export and restore script</li>
+                        <li>Your <strong>Environment Variables</strong> backup and restore script</li>
+                        <li>A <strong>DISM restore script</strong> for applying a captured <code>.wim</code> image</li>
+                        <li>The compiled <strong>BackupPro.exe</strong> itself, so you can run backups/restores directly from the recovery environment</li>
+                    </ul>
+                </div>
+
+                <h3>Requirements: The Windows ADK</h3>
+                <p>Building WinPE media requires the <strong>Windows Assessment and Deployment Kit (ADK)</strong> plus its separate <strong>Windows PE add-on</strong> - both are free Microsoft downloads, not included with BackupPro. The WinPE Media tab automatically checks for these and shows a clear ✅/❌ status.</p>
+
+                <p>If not found, click <strong>🔗 Open Windows ADK Download Page</strong> (or the same prompt appears if you try to build without it) to go straight to Microsoft's official download page. Install both the ADK and the WinPE add-on, then reopen the tab.</p>
+
+                <div class="warning-box">
+                    <strong>⚠️ Administrator Required:</strong> Building WinPE media requires BackupPro to be running as Administrator.
+                </div>
+
+                <h3>How to Build Recovery Media:</h3>
+                <ol>
+                    <li>Go to the <strong>WinPE Media</strong> tab</li>
+                    <li>Under <strong>Restore Content to Include</strong>, click <strong>➕ Add Folder to Include</strong> for each App Inventory / Environment Backup / DISM Restore folder you want bundled in</li>
+                    <li>Under <strong>BackupPro Application</strong>, check <strong>Include BackupPro on this WinPE media</strong> if you want the full app available (it auto-detects a compiled <code>backuppro3.exe</code> next to the script and warns if it looks older than your current source)</li>
+                    <li>Choose the <strong>Architecture</strong> (amd64 for almost all modern PCs)</li>
+                    <li>Leave <strong>Add PowerShell + DISM cmdlets support</strong> checked if you plan to run any <code>.ps1</code> restore scripts from the media</li>
+                    <li>Choose <strong>Output</strong>: <strong>ISO File</strong> (burn to disc or use with virtual media) or <strong>USB Drive</strong></li>
+                    <li>Click <strong>🥾 BUILD WINPE RECOVERY MEDIA</strong></li>
+                    <li>You'll be asked where to build the temporary workspace (needs a few GB free), then where to save the ISO - or which USB drive to write to</li>
+                </ol>
+
+                <div class="error-box">
+                    <strong>🛑 USB Drive Output Erases the Drive Completely:</strong> Building directly to a USB drive formats it entirely. BackupPro requires you to type the drive letter to confirm before proceeding - there is no undo. Back up anything on that USB drive first.
+                </div>
+
+                <h3>Using the Recovery Media:</h3>
+                <p>Boot the target machine from the ISO/USB (may require changing boot order or using a one-time boot menu, typically F12/F11/Esc/Del depending on the manufacturer). A recovery menu appears offering:</p>
+                <ul>
+                    <li><strong>Launch BackupPro</strong> (if bundled) - run backups/restores directly</li>
+                    <li><strong>Open a command prompt in the restore scripts folder</strong> - run your generated <code>.ps1</code>/<code>.bat</code> restore scripts</li>
+                    <li><strong>Open a plain command prompt</strong> - for manual recovery work (diskpart, dism, bcdboot, etc.)</li>
+                    <li><strong>Reboot</strong></li>
+                </ul>
+
+                <div class="tip-box">
+                    <strong>💡 Best Practice:</strong> Build fresh WinPE media whenever you rebuild <code>backuppro3.exe</code> with new features - the media only contains whatever version of the app and scripts existed at build time.
+                </div>
+            </section>
+
+            <!-- TOOLS -->
+            <section id="tools">
+                <h2>9. Tools</h2>
+
+                <p>The Tools tab provides specialized utilities for browser data and network credentials.</p>
+
+                <!-- BROWSER BACKUP -->
+                <h3 id="browser-backup">9.1 Browser Data Backup</h3>
+
+                <p>Export bookmarks, passwords, profiles, and settings from all major browsers.</p>
+
+                <h4>Supported Browsers:</h4>
+                <ul>
+                    <li>🌐 <strong>Google Chrome</strong> - Full profile backup including extensions</li>
+                    <li>🦊 <strong>Mozilla Firefox</strong> - Complete profile data</li>
+                    <li>🌊 <strong>Microsoft Edge</strong> - Chromium-based Edge profiles</li>
+                    <li>🔵 <strong>Chromium</strong> - Open-source Chromium browsers</li>
+                </ul>
+
+                <h4>What Gets Backed Up:</h4>
+                <ul>
+                    <li>Bookmarks and favorites</li>
+                    <li>Saved passwords (encrypted)</li>
+                    <li>Browser history</li>
+                    <li>Extensions and settings</li>
+                    <li>Autofill data</li>
+                    <li>Multiple profiles (Profile 1, Profile 2, etc.)</li>
+                </ul>
+
+                <h4>How to Use:</h4>
+                <ol>
+                    <li>Go to the <strong>Tools</strong> tab</li>
+                    <li>Click <strong>🌐 Backup All Browsers</strong></li>
+                    <li>Select destination folder</li>
+                    <li>BackupPro will automatically:
+                        <ul>
+                            <li>Detect installed browsers</li>
+                            <li>Find all browser profiles</li>
+                            <li>Copy important data (excluding cache)</li>
+                            <li>Create organized folders for each browser</li>
+                        </ul>
+                    </li>
+                    <li>View completion summary showing browsers backed up</li>
+                </ol>
+
+                <h4>Backup Structure:</h4>
+                <pre>
+BrowserBackup_20260207_143052/
+├── Chrome/
+│   ├── Default/
+│   ├── Profile 1/
+│   └── Bookmarks
+├── Firefox/
+│   └── [Profile folders]
+└── Edge/
+    ├── Default/
+    └── Bookmarks
+                </pre>
+
+                <h4>Cache Exclusion:</h4>
+                <p>To save time and space, these are automatically excluded:</p>
+                <ul>
+                    <li>Cache folders</li>
+                    <li>Code Cache</li>
+                    <li>Temporary files</li>
+                </ul>
+
+                <div class="tip-box">
+                    <strong>💡 Perfect For:</strong>
+                    <ul>
+                        <li>System migrations to new computers</li>
+                        <li>Before browser updates or reinstalls</li>
+                        <li>Moving user to different machine</li>
+                        <li>Disaster recovery preparation</li>
+                    </ul>
+                </div>
+
+                <!-- WIFI EXPORT -->
+                <h3 id="wifi-export">9.2 WiFi Password Export</h3>
+
+                <p>Export all saved WiFi network passwords to a readable text file.</p>
+
+                <h4>What Gets Exported:</h4>
+                <ul>
+                    <li>Network name (SSID)</li>
+                    <li>Authentication type</li>
+                    <li>Password (if available)</li>
+                    <li>Connection details</li>
+                </ul>
+
+                <h4>How to Use:</h4>
+                <ol>
+                    <li>Go to the <strong>Tools</strong> tab</li>
+                    <li>Click <strong>📶 Export WiFi Passwords</strong></li>
+                    <li>Choose location and filename for the text file</li>
+                    <li>BackupPro will:
+                        <ul>
+                            <li>Query Windows for saved WiFi profiles</li>
+                            <li>Extract passwords for each network</li>
+                            <li>Create formatted text file</li>
+                        </ul>
+                    </li>
+                    <li>Review exported file showing all networks</li>
+                </ol>
+
+                <h4>Output Format:</h4>
+                <pre>
+============================================================
+WiFi Networks and Passwords
+Exported: 2026-02-07 14:30:52
+Computer: DESKTOP-ABC123
+============================================================
+
+Network Name: Home_Network_5G
+Authentication: WPA2-Personal
+Password: MySecurePassword123
+------------------------------------------------------------
+
+Network Name: Office_WiFi
+Authentication: WPA2-Enterprise
+Password: Not Found
+------------------------------------------------------------
+                </pre>
+
+                <div class="warning-box">
+                    <strong>⚠️ Security Note:</strong>
+                    <ul>
+                        <li>The exported file contains passwords in plain text</li>
+                        <li>Store securely and delete when no longer needed</li>
+                        <li>Do not email or share over unsecured channels</li>
+                        <li>Administrator rights may be required for some networks</li>
+                    </ul>
+                </div>
+
+                <h4>Common Uses:</h4>
+                <ul>
+                    <li>Setting up new computers</li>
+                    <li>Sharing credentials with family members</li>
+                    <li>Documentation for IT departments</li>
+                    <li>Backup before system reinstall</li>
+                    <li>Troubleshooting connectivity issues</li>
+                </ul>
+
+                <div class="tip-box">
+                    <strong>💡 Pro Tip:</strong> Export WiFi passwords before:
+                    <ul>
+                        <li>Windows reinstalls</li>
+                        <li>Computer replacements</li>
+                        <li>Moving to new residence</li>
+                        <li>Handing off computer to someone else</li>
+                    </ul>
+                </div>
+
+                <!-- APP INVENTORY -->
+                <h3 id="app-inventory">9.3 App Inventory Migration</h3>
+
+                <p>Exports a list of your installed applications via <strong>winget</strong> and generates a one-click script to reinstall them all on a clean Windows install - the missing piece for a full new-PC migration.</p>
+
+                <h4>What Gets Created:</h4>
+                <ul>
+                    <li><code>apps.json</code> - the winget package list, used to reinstall everything</li>
+                    <li><code>winget_list.txt</code> - a human-readable reference list</li>
+                    <li><code>restore_apps.ps1</code> / <code>restore_apps.bat</code> - double-click after a clean install to reinstall every app via <code>winget import</code></li>
+                </ul>
+
+                <h4>How to Use:</h4>
+                <ol>
+                    <li>Go to the <strong>Tools</strong> tab</li>
+                    <li>Click <strong>📦 Export App List + Restore Script</strong></li>
+                    <li>Choose a destination folder</li>
+                    <li>Copy the resulting <code>AppInventory_&lt;timestamp&gt;</code> folder to a USB drive, or add it to your <a href="#winpe-media">WinPE Recovery Media</a></li>
+                </ol>
+
+                <div class="warning-box">
+                    <strong>⚠️ Requires winget:</strong> If winget (the "App Installer") isn't installed, BackupPro tells you and skips the JSON export - install App Installer from the Microsoft Store first.
+                </div>
+
+                <!-- ENVIRONMENT BACKUP -->
+                <h3 id="env-backup">9.4 Environment Variables Backup</h3>
+
+                <p>Backs up your user (and, if run as Administrator, system) environment variables to <code>.reg</code> files, plus a plain-text snapshot and a restore script.</p>
+
+                <h4>What Gets Created:</h4>
+                <ul>
+                    <li><code>HKCU_Environment.reg</code> - your user-level environment variables</li>
+                    <li><code>HKLM_Environment.reg</code> - system-level variables (only if run as Administrator)</li>
+                    <li><code>environment_variables.txt</code> - a readable snapshot for quick reference</li>
+                    <li><code>restore_environment.ps1</code> / <code>.bat</code> - re-imports both files, automatically detecting whether it's running elevated before attempting the system-level key</li>
+                </ul>
+
+                <h4>How to Use:</h4>
+                <ol>
+                    <li>Go to the <strong>Tools</strong> tab</li>
+                    <li>Click <strong>🖥️ Backup Environment Variables</strong></li>
+                    <li>Choose a destination folder</li>
+                </ol>
+
+                <div class="tip-box">
+                    <strong>💡 Combine With App Inventory:</strong> Together, App Inventory + Environment Backup form a complete migration kit - run both generated scripts after a clean Windows install to get your apps and custom environment settings (PATH entries, custom variables, etc.) back the way you like them.
+                </div>
+            </section>
+
+            <!-- RESTORE -->
+            <section id="restore">
+                <h2>10. Restore Wizard</h2>
+
+                <p>The Restore Wizard helps you browse and recover files from your backups with ease.</p>
+
+                <h3>How to Use the Restore Wizard:</h3>
+
+                <h4>Step 1: Select Backup Location</h4>
+                <ol>
+                    <li>Go to the <strong>Restore</strong> tab</li>
+                    <li>Click <strong>📁 Browse</strong> next to "Backup Location"</li>
+                    <li>Navigate to where your backups are stored (external drive, network share, etc.)</li>
+                    <li>Select the folder containing your backups</li>
+                </ol>
+
+                <h4>Step 2: Scan for Backups</h4>
+                <ol>
+                    <li>Click <strong>🔍 Scan for Backups</strong></li>
+                    <li>BackupPro will search for backup folders</li>
+                    <li>All found backups will be listed with:
+                        <ul>
+                            <li>Backup name</li>
+                            <li>Date and time</li>
+                            <li>Size in MB</li>
+                        </ul>
+                    </li>
+                </ol>
+
+                <h4>Step 3: Browse or Restore</h4>
+                <p>For each backup found, you can:</p>
+                <ul>
+                    <li><strong>📂 Open Folder</strong> - Browse backup contents in Explorer</li>
+                    <li><strong>🔄 Restore</strong> - Copy files to a location of your choice</li>
+                </ul>
+
+                <h3>Restoring Files:</h3>
+                <ol>
+                    <li>Click <strong>🔄 Restore</strong> on the desired backup</li>
+                    <li>Review backup details in confirmation dialog</li>
+                    <li>Click <strong>Yes</strong> to continue</li>
+                    <li>Select restore destination folder</li>
+                    <li>Monitor progress in Activity Log</li>
+                    <li>Choose to open restored files when complete</li>
+                </ol>
+
+                <h3>Backup Types Recognized:</h3>
+                <ul>
+                    <li><code>UserBackup_*</code> - User profile backups</li>
+                    <li><code>BrowserBackup_*</code> - Browser data backups</li>
+                    <li><code>SystemImage_*</code> - Disk image backups</li>
+                    <li>Any folder containing "Backup" or "backup" in the name</li>
+                </ul>
+
+                <h3>Selective Restore:</h3>
+                <p>To restore only specific files:</p>
+                <ol>
+                    <li>Click <strong>📂 Open Folder</strong> on the backup</li>
+                    <li>Browse the backup in Windows Explorer</li>
+                    <li>Copy only the files/folders you need</li>
+                    <li>Paste to your desired location</li>
+                </ol>
+
+                <div class="tip-box">
+                    <strong>💡 Best Practice:</strong>
+                    <ul>
+                        <li>Test your backup by browsing it before you need to restore</li>
+                        <li>Restore to a temporary location first to verify files</li>
+                        <li>Don't restore directly over existing files without backup</li>
+                        <li>Keep multiple backup generations for safety</li>
+                    </ul>
+                </div>
+
+                <div class="warning-box">
+                    <strong>⚠️ Note:</strong> System images must be restored using Windows Recovery Environment, not the Restore Wizard.
+                </div>
+            </section>
+
+            <!-- PROFILES -->
+            <section id="profiles">
+                <h2>11. Backup Profiles</h2>
+
+                <p>Save frequently used backup configurations as profiles for quick access.</p>
+
+                <h3>Why Use Profiles?</h3>
+                <ul>
+                    <li>Save time by not re-entering paths</li>
+                    <li>Ensure consistency across backups</li>
+                    <li>Quickly run the same backup multiple times</li>
+                    <li>Share configurations with team members</li>
+                    <li>Reduce user error</li>
+                </ul>
+
+                <h3>Creating Profiles:</h3>
+
+                <h4>Method 1: Save from Quick Sync</h4>
+                <ol>
+                    <li>Configure a sync in the Quick Sync tab</li>
+                    <li>Click <strong>💾 Save as Profile</strong></li>
+                    <li>Enter a descriptive name</li>
+                    <li>Profile is saved and appears in Profiles tab</li>
+                </ol>
+
+                <h4>Method 2: Save from Disk Image</h4>
+                <ol>
+                    <li>Configure imaging in the Disk Image tab</li>
+                    <li>Click <strong>💾 Save as Profile</strong></li>
+                    <li>Enter a descriptive name</li>
+                    <li>Profile is saved and appears in Profiles tab</li>
+                </ol>
+
+                <h4>Method 3: Create New Profile</h4>
+                <ol>
+                    <li>Go to <strong>Profiles</strong> tab</li>
+                    <li>Click <strong>➕ New Profile</strong></li>
+                    <li>Choose profile type:
+                        <ul>
+                            <li>📁 Folder Sync Profile</li>
+                            <li>💿 Disk Image Profile</li>
+                        </ul>
+                    </li>
+                    <li>Configure in the respective tab</li>
+                    <li>Save the profile</li>
+                </ol>
+
+                <h3>Managing Profiles:</h3>
+                <p>For each profile, you can:</p>
+                <ul>
+                    <li><strong>▶️ Run</strong> - Execute the backup immediately</li>
+                    <li><strong>✏️ Edit</strong> - Modify the profile settings</li>
+                    <li><strong>🗑️ Delete</strong> - Remove the profile</li>
+                </ul>
+
+                <h3>Profile Information Displayed:</h3>
+                <ul>
+                    <li>Profile name</li>
+                    <li>Type (Sync or Image)</li>
+                    <li>Source path</li>
+                    <li>Destination path</li>
+                    <li>Creation date</li>
+                </ul>
+
+                <h3>Example Profiles:</h3>
+                <table>
+                    <tr>
+                        <th>Profile Name</th>
+                        <th>Type</th>
+                        <th>Purpose</th>
+                    </tr>
+                    <tr>
+                        <td>Daily Documents</td>
+                        <td>Sync</td>
+                        <td>Daily backup of Documents folder to NAS</td>
+                    </tr>
+                    <tr>
+                        <td>Weekly Full System</td>
+                        <td>Image</td>
+                        <td>Weekly C: drive image to external drive</td>
+                    </tr>
+                    <tr>
+                        <td>Project Archive</td>
+                        <td>Sync</td>
+                        <td>Compress completed projects to archive drive</td>
+                    </tr>
+                    <tr>
+                        <td>Photos to NAS</td>
+                        <td>Sync</td>
+                        <td>Sync Pictures folder to network storage</td>
+                    </tr>
+                </table>
+
+                <div class="tip-box">
+                    <strong>💡 Naming Tips:</strong>
+                    <ul>
+                        <li>Use descriptive names: "Daily Docs to NAS" not "Profile 1"</li>
+                        <li>Include frequency: "Weekly", "Daily", "Monthly"</li>
+                        <li>Mention destination: "to NAS", "to External"</li>
+                        <li>Be specific: "Project Files" not "Backup"</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- SCHEDULING -->
+            <section id="scheduling">
+                <h2>12. Scheduling</h2>
+
+                <p>Automate your backups using Windows Task Scheduler integration.</p>
+
+                <h3>How Scheduling Works:</h3>
+                <p>BackupPro creates tasks in Windows Task Scheduler that run even when the application is closed. Scheduled tasks execute saved profiles automatically.</p>
+
+                <h3>Creating a Scheduled Task:</h3>
+                <ol>
+                    <li>Create and save a backup profile first</li>
+                    <li>Go to the <strong>Schedule</strong> tab</li>
+                    <li>Click <strong>➕ New Schedule</strong></li>
+                    <li>Configure schedule settings:
+                        <ul>
+                            <li>Select profile to run</li>
+                            <li>Choose frequency (Daily, Weekly, Monthly)</li>
+                            <li>Set time of day</li>
+                            <li>Enable/disable task</li>
+                        </ul>
+                    </li>
+                    <li>Click <strong>Create Task</strong></li>
+                </ol>
+
+                <h3>Schedule Frequencies:</h3>
+                <ul>
+                    <li><strong>Daily</strong> - Runs every day at specified time</li>
+                    <li><strong>Weekly</strong> - Runs on selected days of week</li>
+                    <li><strong>Monthly</strong> - Runs on specific day of month</li>
+                </ul>
+
+                <h3>Managing Scheduled Tasks:</h3>
+                <p>The Schedule tab shows all configured tasks with:</p>
+                <ul>
+                    <li>Task name and associated profile</li>
+                    <li>Schedule frequency and time</li>
+                    <li>Last run date/time</li>
+                    <li>Status (Enabled/Disabled)</li>
+                </ul>
+
+                <p>For each task, you can:</p>
+                <ul>
+                    <li><strong>Run Now</strong> - Execute immediately</li>
+                    <li><strong>Edit</strong> - Modify schedule settings</li>
+                    <li><strong>Enable/Disable</strong> - Turn on/off</li>
+                    <li><strong>Delete</strong> - Remove completely</li>
+                </ul>
+
+                <h3>Viewing Task History:</h3>
+                <ol>
+                    <li>Open Windows Task Scheduler (taskschd.msc)</li>
+                    <li>Navigate to Task Scheduler Library</li>
+                    <li>Find BackupPro tasks</li>
+                    <li>View History tab for execution logs</li>
+                </ol>
+
+                <div class="warning-box">
+                    <strong>⚠️ Important:</strong>
+                    <ul>
+                        <li>Computer must be powered on for tasks to run</li>
+                        <li>If using network storage, network must be connected</li>
+                        <li>Tasks run with your user account permissions</li>
+                        <li>Administrator rights may be needed for some operations</li>
+                    </ul>
+                </div>
+
+                <h3>Recommended Schedules:</h3>
+                <table>
+                    <tr>
+                        <th>Backup Type</th>
+                        <th>Recommended Frequency</th>
+                        <th>Best Time</th>
+                    </tr>
+                    <tr>
+                        <td>User Profile</td>
+                        <td>Daily</td>
+                        <td>11:00 PM (off-hours)</td>
+                    </tr>
+                    <tr>
+                        <td>Documents Sync</td>
+                        <td>Daily</td>
+                        <td>6:00 PM (end of workday)</td>
+                    </tr>
+                    <tr>
+                        <td>System Image</td>
+                        <td>Weekly</td>
+                        <td>Sunday 2:00 AM</td>
+                    </tr>
+                    <tr>
+                        <td>Project Archives</td>
+                        <td>Weekly</td>
+                        <td>Friday 5:00 PM</td>
+                    </tr>
+                </table>
+
+                <div class="tip-box">
+                    <strong>💡 Best Practice:</strong>
+                    <ul>
+                        <li>Schedule during off-hours to minimize performance impact</li>
+                        <li>Stagger multiple tasks to avoid resource conflicts</li>
+                        <li>Test schedules by running manually first</li>
+                        <li>Enable email notifications for scheduled tasks</li>
+                        <li>Regularly verify backups are completing successfully</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- SETTINGS -->
+            <section id="settings">
+                <h2>13. Settings</h2>
+
+                <p>Configure BackupPro's behavior and preferences.</p>
+
+                <h3>Accessing Settings:</h3>
+                <p>Click <strong>⚙️ Settings</strong> in the header toolbar.</p>
+
+                <h3>Settings Categories:</h3>
+
+                <h4>General Settings</h4>
+                <ul>
+                    <li><strong>Keep Last N Backups:</strong>
+                        <ul>
+                            <li>Applies to disk images</li>
+                            <li>Automatically deletes older backups</li>
+                            <li>Default: 5</li>
+                            <li>Range: 1-20</li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <h4>Network Storage (NAS)</h4>
+                <p>These defaults are intentionally blank on a fresh install - BackupPro no longer assumes any particular network, so every user configures their own.</p>
+                <ul>
+                    <li><strong>NAS / Server IP Address:</strong>
+                        <ul>
+                            <li>The device the dashboard pings to show online/offline status</li>
+                            <li>Leave blank to disable NAS monitoring entirely</li>
+                            <li>Click <strong>🔌 Test</strong> next to the field to verify it's reachable before saving</li>
+                        </ul>
+                    </li>
+                    <li id="nas-login"><strong>NAS Login (username/password):</strong>
+                        <ul>
+                            <li>Used for network (UNC) disk-imaging destinations</li>
+                            <li>Saved here so you're not asked every time - see <a href="#nas-imaging">7.2 Backing Up to a NAS / Network Share</a> for why this is needed even when your normal mapped drive already works</li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <h4>Email Notifications</h4>
+                <ul>
+                    <li><strong>Enable Notifications:</strong>
+                        <ul>
+                            <li>Checkbox to enable/disable email alerts</li>
+                        </ul>
+                    </li>
+                    <li><strong>Sender Email:</strong>
+                        <ul>
+                            <li>Your Gmail address</li>
+                            <li>Used to send notifications</li>
+                        </ul>
+                    </li>
+                    <li><strong>Email Password:</strong>
+                        <ul>
+                            <li>Gmail App Password (not regular password!)</li>
+                        </ul>
+                    </li>
+                    <li><strong>SMTP Server:</strong>
+                        <ul>
+                            <li>Default: smtp.gmail.com</li>
+                            <li>Change for other providers</li>
+                        </ul>
+                    </li>
+                    <li><strong>SMTP Port:</strong>
+                        <ul>
+                            <li>Default: 465 (SSL)</li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <h4 id="sms-alerts">SMS Text Alerts</h4>
+                <p>Texts your phone via your carrier's free email-to-SMS gateway, using the same Gmail account configured above - no separate SMS service, app, or API key needed.</p>
+                <ul>
+                    <li><strong>Enable SMS text alerts:</strong> master on/off checkbox</li>
+                    <li><strong>Phone numbers:</strong> click <strong>➕ Add Phone Number</strong> and enter a label, the 10-digit number, and the carrier from the dropdown (AT&T, Verizon, T-Mobile, Xfinity/Comcast, Sprint, US Cellular, Boost, Cricket, Metro PCS, Google Fi, Mint Mobile, Visible, Consumer Cellular, or Straight Talk)</li>
+                </ul>
+                <div class="warning-box">
+                    <strong>⚠️ Carrier Gateway Accuracy:</strong> Carriers occasionally change or retire their email-to-SMS gateway addresses. If texts stop arriving, verify your carrier still supports this feature - some (especially prepaid MVNOs) have discontinued it.
+                </div>
+
+                <h4 id="ntfy-alerts">ntfy Push Notifications</h4>
+                <p>Free, instant push notifications to your phone or desktop via <a href="https://ntfy.sh" target="_blank">ntfy.sh</a> - no Gmail account needed for this channel, it's a separate HTTP request.</p>
+                <ul>
+                    <li><strong>Enable ntfy push notifications:</strong> master on/off checkbox</li>
+                    <li><strong>Topic:</strong> a name you choose (or generate randomly with <strong>🎲 Generate</strong>) - install the free ntfy app and subscribe to the same topic name to receive alerts</li>
+                    <li><strong>Server:</strong> defaults to <code>https://ntfy.sh</code>; change this if you run a self-hosted ntfy server</li>
+                </ul>
+                <div class="warning-box">
+                    <strong>⚠️ Topic Privacy:</strong> Anyone who knows your topic name can read your notifications on the public ntfy.sh server. Keep it random - avoid anything guessable like "backup" or "ronbackups".
+                </div>
+
+                <h3>Testing Notifications:</h3>
+                <p>Click <strong>📤 Send Test Notification</strong> in Settings to immediately test whatever combination of Email/SMS/ntfy is currently filled in and enabled - it reports per-channel success/failure so you know exactly which part of your setup, if any, needs attention.</p>
+
+                <h3>Setting Up Gmail Notifications:</h3>
+                <ol>
+                    <li>Go to Google Account settings</li>
+                    <li>Security → 2-Step Verification</li>
+                    <li>App Passwords → Generate new password</li>
+                    <li>Select "Other" and name it "BackupPro"</li>
+                    <li>Copy the 16-character password</li>
+                    <li>Paste into BackupPro Email Password field</li>
+                    <li>Check "Enable Notifications" (and/or "Enable SMS text alerts" if you added phone numbers)</li>
+                    <li>Click "📤 Send Test Notification" to verify</li>
+                </ol>
+
+                <h3>Configuration File:</h3>
+                <p>Settings are stored in <code>backup_config.json</code> in the application directory. Note that the compiled <code>backuppro3.exe</code> in the <code>dist</code> folder keeps its own separate copy there, distinct from the one used when running <code>backuppro3.py</code> directly from the project root.</p>
+
+                <div class="warning-box">
+                    <strong>⚠️ Security:</strong>
+                    <p>All credentials (email app password, NAS login, SMS/ntfy settings) are stored in <strong>plain text</strong> in <code>backup_config.json</code>, matching the rest of the REGTeches tool suite. This is a deliberate, accepted trade-off for a single-user local tool, not an oversight - protect the file accordingly.</p>
+                    <ul>
+                        <li>Never use your regular Gmail password</li>
+                        <li>Always use Gmail App Passwords</li>
+                        <li>Configuration file contains sensitive data</li>
+                        <li>Protect configuration backups appropriately</li>
+                    </ul>
+                </div>
+
+                <div class="tip-box">
+                    <strong>💡 Notification Benefits:</strong>
+                    <ul>
+                        <li>Get alerted when scheduled backups complete</li>
+                        <li>Receive failure notifications</li>
+                        <li>Monitor unattended systems</li>
+                        <li>Verify backups without checking manually</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- TROUBLESHOOTING -->
+            <section id="troubleshooting">
+                <h2>14. Troubleshooting</h2>
+
+                <h3>Common Issues and Solutions:</h3>
+
+                <h4>Issue: "Administrator Required" Error</h4>
+                <p><strong>Solution:</strong></p>
+                <ol>
+                    <li>Right-click <code>backuppro3.exe</code> (or <code>backuppro3.py</code> if running from source)</li>
+                    <li>Select "Run as Administrator"</li>
+                    <li>Or create shortcut with Admin privileges enabled, or accept BackupPro's own elevation prompt on startup</li>
+                </ol>
+
+                <h4>Issue: NAS Shows "Not Configured" or "Offline"</h4>
+                <p><strong>"Not Configured"</strong> is expected on a fresh install - BackupPro no longer assumes any particular network or IP address, so this just means no NAS IP has been entered in Settings yet. Enter your own NAS's IP address and click <strong>🔌 Test</strong> to confirm it's reachable.</p>
+                <p><strong>"Offline" Solutions:</strong></p>
+                <ul>
+                    <li>Verify NAS is powered on and connected to network</li>
+                    <li>Check IP address in Settings is correct</li>
+                    <li>Ping NAS from Command Prompt, e.g. <code>ping 192.168.1.50</code> (use your own NAS's IP)</li>
+                    <li>Verify firewall isn't blocking connection</li>
+                    <li>Try accessing NAS from File Explorer</li>
+                </ul>
+
+                <h4>Issue: WiFi Export Shows "Not Found" for Passwords</h4>
+                <p><strong>Solutions:</strong></p>
+                <ul>
+                    <li>Run BackupPro as Administrator</li>
+                    <li>Some networks use certificate authentication (no password)</li>
+                    <li>Enterprise networks may not store passwords locally</li>
+                </ul>
+
+                <h4>Issue: Browser Backup Skips Some Browsers</h4>
+                <p><strong>Explanation:</strong></p>
+                <ul>
+                    <li>Browser not installed in standard location</li>
+                    <li>Portable browser versions not detected</li>
+                    <li>Non-standard browser variants</li>
+                </ul>
+                <p><strong>Solution:</strong></p>
+                <ul>
+                    <li>Manually copy browser profile from:
+                        <br><code>C:\Users\Username\AppData\Local\[BrowserName]</code>
+                    </li>
+                </ul>
+
+                <h4>Issue: Sync Operation Hangs or Freezes</h4>
+                <p><strong>Solutions:</strong></p>
+                <ul>
+                    <li>Click <strong>⏹ Cancel</strong> to stop operation</li>
+                    <li>Check source/destination paths are accessible</li>
+                    <li>Verify sufficient disk space at destination</li>
+                    <li>Check for locked/in-use files</li>
+                    <li>Try running as Administrator</li>
+                </ul>
+
+                <h4>Issue: Email / SMS / ntfy Notifications Not Working</h4>
+                <p><strong>Solutions:</strong></p>
+                <ol>
+                    <li>Click <strong>📤 Send Test Notification</strong> in Settings - it reports success/failure separately per channel, so you know exactly which one to fix</li>
+                    <li>Verify you're using a Gmail <strong>App Password</strong>, not your regular password (required for both Email and SMS, since SMS is sent through the same Gmail account)</li>
+                    <li>Check the sender email address is correct and 2-Step Verification is enabled on the Google Account</li>
+                    <li>For SMS: confirm the phone number and carrier are correct - carriers occasionally retire their email-to-SMS gateway</li>
+                    <li>For ntfy: confirm you've subscribed to the exact same topic name in the ntfy app, and that "Enable ntfy push notifications" is checked</li>
+                    <li>Check the spam folder for email notifications</li>
+                    <li>Verify internet connection</li>
+                </ol>
+
+                <h4>Issue: Disk Image Fails with "Cannot backup to same drive"</h4>
+                <p><strong>Solution:</strong></p>
+                <ul>
+                    <li>Must backup to different physical drive</li>
+                    <li>Use external drive or network share</li>
+                    <li>Cannot backup C: to C:\Backups</li>
+                </ul>
+
+                <h4>Issue: "Another Backup or Recovery Operation Is In Progress"</h4>
+                <p><strong>Explanation:</strong> wbAdmin's internal lock didn't clear cleanly - usually because a prior backup was interrupted (cancelled, app closed, process killed) rather than an actual concurrent backup running.</p>
+                <p><strong>Solution:</strong></p>
+                <ol>
+                    <li>Make sure no backup is genuinely running elsewhere first</li>
+                    <li>On the <strong>Disk Image</strong> tab, click <strong>🔄 Stuck on "another backup is in progress"? Reset Backup Service</strong></li>
+                    <li>Confirm the dialog - this restarts the <code>wbengine</code> Windows service</li>
+                    <li><strong>Wait for it to fully finish</strong> (watch the Activity Monitor) before retrying - starting a new backup while the reset is still running will cause a real collision, not just a stale-lock error</li>
+                    <li>Try <strong>CREATE SYSTEM IMAGE</strong> again</li>
+                </ol>
+
+                <h4>Issue: Backup to a Mapped Network Drive (e.g. V:\) Fails or Isn't Detected</h4>
+                <p><strong>Explanation:</strong> Administrator-elevated processes run in a separate Windows logon session and can't see drives mapped in your normal desktop session.</p>
+                <p><strong>Solutions:</strong></p>
+                <ul>
+                    <li>Let BackupPro convert the destination to its real network path when prompted ("Mapped Network Drive Detected") rather than typing the mapped letter manually</li>
+                    <li>If prompted for a NAS login, enter your NAS credentials directly (checking "Remember in Settings" saves them for next time) - see <a href="#nas-imaging">7.2 Backing Up to a NAS / Network Share</a></li>
+                    <li>If it still fails with access denied after providing credentials, double-check the username/password and that the share permits that account</li>
+                </ul>
+
+                <h4>Issue: DISM Capture Fails with "The process cannot access the file"</h4>
+                <p><strong>Explanation:</strong> DISM's <code>/Capture-Image</code> isn't VSS-aware like wbAdmin - capturing a live, running <code>C:</code> drive can hit any file a running process has open at that moment (BackupPro pre-excludes common offenders like <code>pagefile.sys</code>, <code>DumpStack.log.tmp</code>, and OneDrive's sync-staging folder, but can't predict every possible one).</p>
+                <p><strong>Solutions:</strong></p>
+                <ul>
+                    <li>Click <strong>Yes</strong> when prompted to open <code>dism.log</code> - it names the exact file that was locked, near the end of the file</li>
+                    <li>For a one-off, non-critical file, close whatever app has it open and retry</li>
+                    <li>For a fully reliable full-<code>C:</code> capture, use <strong>CREATE SYSTEM IMAGE</strong> (wbAdmin/VSS) instead, or capture from <a href="#winpe-media">WinPE Recovery Media</a> where nothing else is running</li>
+                </ul>
+
+                <h4>Issue: Quick Profile Backup Missing Folders</h4>
+                <p><strong>Solutions:</strong></p>
+                <ul>
+                    <li>Folders may be on OneDrive - BackupPro will still find them</li>
+                    <li>Some users don't have all folders (normal)</li>
+                    <li>Check Activity Log for details on what was found</li>
+                </ul>
+
+                <h4>Issue: Compression Takes Very Long</h4>
+                <p><strong>Explanation:</strong></p>
+                <ul>
+                    <li>ZIP compression is CPU intensive</li>
+                    <li>Large folders with many files take time</li>
+                </ul>
+                <p><strong>Solutions:</strong></p>
+                <ul>
+                    <li>Use regular sync mode instead for large backups</li>
+                    <li>Exclude unnecessary subfolders before compressing</li>
+                    <li>Consider splitting into smaller archives</li>
+                </ul>
+
+                <h3>Log Files:</h3>
+                <p>Check <code>backup_log.txt</code> in the application directory for detailed error messages.</p>
+
+                <h3>Getting Support:</h3>
+                <p>If issues persist:</p>
+                <ul>
+                    <li>Check the Activity Log for specific error messages</li>
+                    <li>Review <code>backup_log.txt</code> for details</li>
+                    <li>Note exact error message or behavior</li>
+                    <li>Document steps that led to the issue</li>
+                    <li>Contact: the GitHub issue tracker</li>
+                </ul>
+            </section>
+
+            <!-- BEST PRACTICES -->
+            <section id="best-practices">
+                <h2>15. Best Practices</h2>
+
+                <h3>Backup Strategy:</h3>
+
+                <h4>Follow the 3-2-1 Rule:</h4>
+                <ul>
+                    <li><strong>3</strong> copies of data (original + 2 backups)</li>
+                    <li><strong>2</strong> different media types (internal drive + external/NAS)</li>
+                    <li><strong>1</strong> copy offsite (cloud, different location)</li>
+                </ul>
+
+                <h4>Regular Backup Schedule:</h4>
+                <table>
+                    <tr>
+                        <th>Data Type</th>
+                        <th>Frequency</th>
+                        <th>Method</th>
+                    </tr>
+                    <tr>
+                        <td>Active Work Files</td>
+                        <td>Daily</td>
+                        <td>Quick Sync to NAS</td>
+                    </tr>
+                    <tr>
+                        <td>User Profile</td>
+                        <td>Weekly</td>
+                        <td>Quick Profile Backup</td>
+                    </tr>
+                    <tr>
+                        <td>Full System</td>
+                        <td>Monthly</td>
+                        <td>Disk Image to External</td>
+                    </tr>
+                    <tr>
+                        <td>Archived Projects</td>
+                        <td>As Needed</td>
+                        <td>Compressed Archive</td>
+                    </tr>
+                </table>
+
+                <h3>Storage Best Practices:</h3>
+
+                <h4>Destination Choices:</h4>
+                <ul>
+                    <li><strong>External Hard Drive:</strong>
+                        <ul>
+                            <li>Fast, portable, affordable</li>
+                            <li>Keep disconnected when not backing up</li>
+                            <li>Use for system images and monthly backups</li>
+                        </ul>
+                    </li>
+                    <li><strong>Network Attached Storage (NAS):</strong>
+                        <ul>
+                            <li>Always available for scheduled backups</li>
+                            <li>Accessible from multiple computers</li>
+                            <li>Perfect for daily document syncs</li>
+                        </ul>
+                    </li>
+                    <li><strong>Cloud Storage:</strong>
+                        <ul>
+                            <li>Offsite protection</li>
+                            <li>Accessible anywhere</li>
+                            <li>Good for important documents</li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <h3>Before Major Changes:</h3>
+                <p>Always create backups before:</p>
+                <ul>
+                    <li>Windows updates or upgrades</li>
+                    <li>Major software installations</li>
+                    <li>System modifications or repairs</li>
+                    <li>Hardware replacements</li>
+                    <li>Registry edits</li>
+                    <li>Disk partitioning</li>
+                </ul>
+
+                <h3>Verification:</h3>
+                <ul>
+                    <li>Periodically test restoring from backups</li>
+                    <li>Verify backup completed successfully (check log)</li>
+                    <li>Browse backup contents occasionally</li>
+                    <li>Ensure backups aren't corrupted</li>
+                    <li>Check available storage space regularly</li>
+                </ul>
+
+                <h3>Security:</h3>
+                <ul>
+                    <li>Keep external backup drives disconnected when not in use</li>
+                    <li>Encrypt sensitive backups</li>
+                    <li>Store offsite backups in secure location</li>
+                    <li>Use strong passwords for network shares</li>
+                    <li>Don't leave backup drives connected during internet usage</li>
+                </ul>
+
+                <h3>Maintenance:</h3>
+                <ul>
+                    <li>Review and clean old backups quarterly</li>
+                    <li>Check log file size periodically (max 10MB)</li>
+                    <li>Update backup profiles when paths change</li>
+                    <li>Test scheduled tasks monthly</li>
+                    <li>Document your backup strategy</li>
+                </ul>
+
+                <h3>For IT Professionals:</h3>
+                <ul>
+                    <li>Create standardized profiles for deployment</li>
+                    <li>Document backup procedures for clients</li>
+                    <li>Set up email notifications for monitoring</li>
+                    <li>Keep BackupPro updated to latest version</li>
+                    <li>Train end users on basic backup operations</li>
+                </ul>
+
+                <div class="tip-box">
+                    <strong>💡 Pro Tip:</strong> The best backup is the one that actually gets done! Start simple with Quick Profile Backup, then expand your backup strategy over time.
+                </div>
+
+                <div class="warning-box">
+                    <strong>⚠️ Remember:</strong> No backup system is perfect. Multiple backup copies using different methods provide the best protection against data loss.
+                </div>
+            </section>
+
+            <!-- QUICK REFERENCE -->
+            <section id="quick-reference">
+                <h2>16. Quick Reference</h2>
+
+                <h3>Keyboard Shortcuts:</h3>
+                <table>
+                    <tr>
+                        <th>Shortcut</th>
+                        <th>Action</th>
+                    </tr>
+                    <tr>
+                        <td>Ctrl + S</td>
+                        <td>Quick save profile</td>
+                    </tr>
+                    <tr>
+                        <td>Ctrl + Q</td>
+                        <td>Quit application</td>
+                    </tr>
+                    <tr>
+                        <td>F5</td>
+                        <td>Refresh all lists</td>
+                    </tr>
+                </table>
+
+                <h3>File Locations:</h3>
+                <ul>
+                    <li><strong>Configuration:</strong> <code>backup_config.json</code></li>
+                    <li><strong>Log File:</strong> <code>backup_log.txt</code></li>
+                    <li><strong>User Profiles:</strong> <code>C:\Users\Username\</code></li>
+                    <li><strong>Browser Data:</strong> <code>C:\Users\Username\AppData\Local\</code></li>
+                </ul>
+
+                <h3>Return Codes (Robocopy):</h3>
+                <table>
+                    <tr>
+                        <th>Code</th>
+                        <th>Meaning</th>
+                    </tr>
+                    <tr>
+                        <td>0-3</td>
+                        <td>Success (files copied)</td>
+                    </tr>
+                    <tr>
+                        <td>4-7</td>
+                        <td>Minor issues (some files skipped)</td>
+                    </tr>
+                    <tr>
+                        <td>8+</td>
+                        <td>Serious errors occurred</td>
+                    </tr>
+                </table>
+
+                <h3>Common Commands:</h3>
+                <p><strong>Check NAS connectivity:</strong></p>
+                <code>ping 192.168.1.50</code>
+
+                <p><strong>View Task Scheduler:</strong></p>
+                <code>taskschd.msc</code>
+
+                <p><strong>Check disk space:</strong></p>
+                <code>wmic logicaldisk get caption,size,freespace</code>
+            </section>
+
+        </div>
+
+        <footer>
+            <h3>BackupPro v3.0 - Professional Edition</h3>
+            <p>Developed by Ronald Goodchild | REGTeches</p>
+            <p style="margin-top: 20px;">© 2026 REGTeches. All Rights Reserved.</p>
+            <p style="margin-top: 10px; font-size: 0.9em;">For support: the GitHub issue tracker</p>
+        </footer>
+    </div>
+</body>
+</html>

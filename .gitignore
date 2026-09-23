@@ -1,0 +1,13 @@
+__pycache__/
+*.pyc
+build/
+dist/
+*.spec
+*.exe
+*.zip
+*.mp4
+
+# Runtime data - never commit (paths, NAS address, logs, settings)
+backup_config.json
+backup_log*.txt
+*.log
