@@ -4,6 +4,11 @@ A free, all-in-one Windows backup toolkit with a modern GUI: folder mirroring, f
 
 > Built by a working IT technician to make client and home-lab backups painless. Free to use, free to change.
 
+## Screenshots
+
+![Quick Sync tab: mirror a folder, save it as a profile, watch the activity monitor](docs/screenshots/main.png)
+*Quick Sync tab: mirror a folder, save it as a profile, watch the activity monitor*
+
 ## Features
 
 - **Quick Sync** - mirror a folder with robocopy; dry-run preview, optional ZIP archive

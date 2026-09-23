@@ -4,7 +4,7 @@ Comment on (or open) an issue first so we don't duplicate work.
 
 ## Good first issues
 - [ ] Split the 5,000-line `backuppro.py` into modules (engine / UI / notifications / WinPE)
-- [ ] Add screenshots and an animated demo to the README
+- [x] Add screenshots and an animated demo to the README
 - [ ] Convert the HTML manual to Markdown
 - [ ] Add a `--version` flag and a single version constant
 
